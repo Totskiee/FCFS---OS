@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>FCFS Scheduling Simulator</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <h1>FCFS Scheduling Simulator</h1>
+      <p>First-Come, First-Served: the CPU runs processes in the order they arrive, and each one finishes before the next begins.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- Step 1: input -->
+    <section class="card">
+      <h2><span class="step">1</span> Enter your processes</h2>
+      <p class="help">Arrival time is when a process joins the queue. Burst time is how long it needs the CPU.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Process</th><th>Arrival time</th><th>Burst time</th><th></th></tr>
+          </thead>
+          <tbody id="process-rows"></tbody>
+        </table>
+      </div>
+      <div class="actions">
+        <button id="add-btn" class="secondary">+ Add process</button>
+        <button id="clear-btn" class="ghost">Clear all</button>
+      </div>
+    </section>
+
+    <!-- Step 2: Gantt chart -->
+    <section class="card">
+      <h2><span class="step">2</span> Run and watch the schedule</h2>
+      <div class="actions">
+        <button id="run-btn" class="primary">Run simulation</button>
+      </div>
+      <p id="message" class="error"></p>
+      <div class="chart-area">
+        <div id="gantt"></div>
+        <div id="ticks"></div>
+      </div>
+      <div id="stats"></div>
+    </section>
+
+    <!-- Step 3: results -->
+    <section class="card">
+      <h2><span class="step">3</span> Understand the numbers</h2>
+      <div id="insight"></div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Process</th><th>Arrival</th><th>Burst</th>
+              <th>Start</th><th>Completion</th><th>Waiting</th><th>Turnaround</th>
+            </tr>
+          </thead>
+          <tbody id="result-rows"></tbody>
+        </table>
+      </div>
+      <ul id="explain"></ul>
+      <p class="formulas">
+        <b>Waiting time</b> = Start &minus; Arrival &nbsp;&nbsp;|&nbsp;&nbsp;
+        <b>Turnaround time</b> = Completion &minus; Arrival
+      </p>
+    </section>
+  </main>
+
+  <!-- Order matters: each file uses the one before it. -->
+  <script src="js/fcfs.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

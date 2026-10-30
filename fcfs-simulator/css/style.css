@@ -1,0 +1,105 @@
+/* ---------- Colors and sizes (change the look here) ---------- */
+:root {
+  --bg: #f3f5fa;
+  --card: #ffffff;
+  --ink: #1b2438;
+  --muted: #5d6a82;
+  --line: #e2e7f0;
+  --primary: #3156d3;
+  --header: #14213d;
+  --danger: #c0392b;
+  --radius: 12px;
+}
+
+/* ---------- Page ---------- */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+
+.top { background: var(--header); color: white; padding: 28px 0; margin-bottom: 24px; }
+.top h1 { margin: 0 0 6px; font-size: 1.6rem; }
+.top p { margin: 0; color: #c5cee3; max-width: 60ch; }
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.card h2 { margin: 0 0 8px; font-size: 1.1rem; display: flex; align-items: center; gap: 10px; }
+.step {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--primary); color: white; font-size: .85rem;
+}
+.help { margin: 0 0 14px; color: var(--muted); font-size: .92rem; }
+
+/* ---------- Tables ---------- */
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--line); }
+th { font-size: .85rem; color: var(--muted); font-weight: 600; }
+
+input {
+  width: 72px; padding: 6px 8px;
+  border: 1px solid var(--line); border-radius: 8px;
+  font: inherit; color: inherit; background: var(--bg);
+}
+
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 8px; }
+
+/* ---------- Buttons ---------- */
+.actions { display: flex; gap: 10px; margin-top: 14px; }
+button {
+  font: inherit; font-weight: 600; padding: 9px 16px;
+  border-radius: 8px; border: 1px solid transparent; cursor: pointer;
+}
+button:focus-visible, input:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.primary { background: var(--primary); color: white; }
+.secondary { background: white; color: var(--primary); border-color: var(--primary); }
+.ghost { background: transparent; color: var(--muted); }
+.remove { padding: 4px 10px; background: transparent; color: var(--muted); border-color: var(--line); font-weight: 500; }
+
+.error { color: var(--danger); margin: 10px 0 0; }
+
+/* ---------- Gantt chart: block widths are set from durations in ui.js ---------- */
+.chart-area { padding: 0 14px; margin-top: 16px; }
+#gantt { display: flex; gap: 2px; }
+#gantt:empty { display: block; padding: 22px 0; text-align: center; color: var(--muted); border: 1px dashed var(--line); border-radius: 8px; }
+#gantt:empty::before { content: "Your schedule will appear here."; }
+.block { text-align: center; padding: 16px 0; border-radius: 6px; font-weight: 600; min-width: 0; overflow: hidden; }
+.block.idle { background: repeating-linear-gradient(45deg, #eef1f6, #eef1f6 6px, #e3e8f0 6px, #e3e8f0 12px); color: var(--muted); font-weight: 400; }
+
+#ticks { position: relative; height: 22px; margin-top: 6px; font-size: .8rem; color: var(--muted); }
+#ticks span { position: absolute; transform: translateX(-50%); }
+
+/* ---------- Stat cards, insight, explanations ---------- */
+#stats { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px; }
+.stat { flex: 1; min-width: 150px; background: var(--bg); border-radius: 10px; padding: 12px 14px; }
+.stat b { display: block; font-size: 1.5rem; }
+.stat span { color: var(--muted); font-size: .85rem; }
+
+.insight { background: #eef2ff; border-left: 4px solid var(--primary); border-radius: 6px; padding: 12px 14px; margin-bottom: 16px; }
+#explain { padding-left: 0; list-style: none; margin: 16px 0 0; }
+#explain li { padding: 6px 0; color: var(--muted); }
+#explain b { color: var(--ink); }
+.formulas { margin: 16px 0 0; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+
+/* ---------- Phone safe areas, dark mode, idle-block colors ---------- */
+:root{--idle1:#eef1f6;--idle2:#e3e8f0;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--header);z-index:10}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1626;--card:#18223a;--ink:#e8edf6;--muted:#93a3bd;--line:#2c3a58;--primary:#5b7cf5;--header:#0a1020;--idle1:#202c47;--idle2:#2a3858;color-scheme:dark}:root:not([data-theme="light"]) .insight{background:#1f2a4d}}
+:root[data-theme="dark"]{--bg:#0f1626;--card:#18223a;--ink:#e8edf6;--muted:#93a3bd;--line:#2c3a58;--primary:#5b7cf5;--header:#0a1020;--idle1:#202c47;--idle2:#2a3858;color-scheme:dark}
+:root[data-theme="dark"] .insight{background:#1f2a4d}
+.block{color:#14213d}
+.block.idle{background:repeating-linear-gradient(45deg,var(--idle1),var(--idle1) 6px,var(--idle2) 6px,var(--idle2) 12px);color:var(--muted)}
+.wrap{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
